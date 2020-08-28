@@ -1,7 +1,6 @@
 HostKey /etc/ssh/ssh_host_rsa_key
 
 SyslogFacility AUTH
-LogLevel DEBUG
 
 LoginGraceTime 120
 PermitRootLogin no
@@ -24,8 +23,3 @@ TCPKeepAlive yes
 AcceptEnv LANG LC_*
 
 Subsystem sftp internal-sftp
-
-Match User ftp
-  ChrootDirectory %h
-  ForceCommand internal-sftp
-  AllowTcpForwarding no

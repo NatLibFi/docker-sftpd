@@ -1,0 +1,31 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: generate-tags
+  image: quay.io/natlibfi/drone-gen-tags
+
+- name: docker
+  image: plugins/docker
+  settings:
+    registry: quay.io
+    repo: quay.io/natlibfi/sftpd
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+---
+kind: secret
+name: docker_username
+data: iriFl3A9DeRKe8wEKR48Tl1LDN/x2qD/tlFFvXMAUs2XxS31BETo9kKNjZ1WRg4fUyU=
+---
+kind: secret
+name: docker_password
+data: zxcqEP43mFH4uGWpDLZZwlX6LIolDLKSnn30pDsMCcqZTe22CBhh1eFYlSSP7lPbBVVXH0tn5IrplWlv4VU87yZ4tcmol27sezKY99XHRDwtGPhscLBJGmUDF1Y=
+---
+kind: signature
+hmac: 688486b3206afd1e787fd33e1d52adfd8f07721fe3303f68d1fcf6c60fff2ef2
+
+...
