@@ -10,6 +10,39 @@
 
 ### Example Docker Swarm stack manifest
 ```yaml
+version: '3.7'
+services:
+  app:
+    image: quay.io/natlibfi/sftpd
+    volumes:
+      - foo:/var/lib/sftp/foo/data
+    configs:
+      - source: users
+        target: /users.conf
+    secrets:
+      - source: host-key-private
+        target: /etc/ssh/ssh_host_rsa_key
+      - source: host-key-public
+        target: /etc/ssh/ssh_host_rsa_key.pub       
+      - source: foo-authorized-keys
+        target: /authorized_keys/foo.authorized_keys
+    deploy:
+      replicas: 1
+      restart_policy:
+       condition: any   
+configs:
+  users:
+    external: true
+    name: users
+secrets:
+  host-key-private:
+    external: true    
+  host-key-public:
+    external: true
+  foo-authorized-keys:
+    external: true
+volumes:
+  foo:
 ```
 
 ## License and copyright

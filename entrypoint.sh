@@ -11,7 +11,7 @@ for LINE in `cat ${USERS_CONF_FILE}`;do
   echo -e "${USER_PASS}\n${USER_PASS}"|passwd $USER_NAME
 
   mkdir ${USER_HOME}/.ssh
-  cat ${AUTHORIZED_KEYS_DIR}/${USER_NAME}.authorized_keys > ${USER_HOME}/.ssh/authorized_keys
+  cat ${AUTHORIZED_KEYS_DIR}/${USER_NAME} > ${USER_HOME}/.ssh/authorized_keys
   chown -R ${USER_NAME}:${USER_NAME} ${USER_HOME}/.ssh
   chmod 0700 ${USER_HOME}/.ssh
   chmod 0600 ${USER_HOME}/.ssh/authorized_keys
