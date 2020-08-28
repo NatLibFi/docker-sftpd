@@ -7,7 +7,7 @@ for LINE in `cat ${USERS_CONF_FILE}`;do
   USER_PASS=`xxd -l16 -p /dev/urandom`
   USER_HOME=/home/${USER_NAME}
 
-  adduser -D -u $USER_IsD $USER_NAME
+  adduser -D -u $USER_ID $USER_NAME
   echo -e "${USER_PASS}\n${USER_PASS}"|passwd $USER_NAME
 
   mkdir ${USER_HOME}/.ssh
