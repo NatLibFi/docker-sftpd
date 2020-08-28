@@ -22,10 +22,13 @@ services:
     secrets:
       - source: host-key-private
         target: /etc/ssh/ssh_host_rsa_key
+        mode: 0600        
       - source: host-key-public
         target: /etc/ssh/ssh_host_rsa_key.pub       
+        mode: 0600        
       - source: foo-authorized-keys
         target: /authorized_keys/foo.authorized_keys
+        mode: 0600        
     deploy:
       replicas: 1
       restart_policy:
